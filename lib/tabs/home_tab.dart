@@ -51,7 +51,7 @@ class HomeTab extends StatelessWidget {
             },
           ),
           CustomActionBar(
-            title: "Home",
+            title: "Reliable",
             hasBackArrrow: false,
           ),
         ],

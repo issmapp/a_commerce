@@ -11,7 +11,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   Future<void> _alertDialogBuilder(String error) async {
     return showDialog(
         context: context,
@@ -23,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Text(error),
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text("Close Dialog"),
                 onPressed: () {
                   Navigator.pop(context);
@@ -31,8 +30,7 @@ class _LoginPageState extends State<LoginPage> {
               )
             ],
           );
-        }
-    );
+        });
   }
 
   // Create a new user account
@@ -41,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _loginEmail, password: _loginPassword);
       return null;
-    } on FirebaseAuthException catch(e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return 'The password provided is too weak.';
       } else if (e.code == 'email-already-in-use') {
@@ -63,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
     String _loginFeedback = await _loginAccount();
 
     // If the string is not null, we got error while create account.
-    if(_loginFeedback != null) {
+    if (_loginFeedback != null) {
       _alertDialogBuilder(_loginFeedback);
 
       // Set the form to regular state [not loading].
@@ -155,9 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => RegisterPage()
-                      ),
+                      MaterialPageRoute(builder: (context) => RegisterPage()),
                     );
                   },
                   outlineBtn: true,

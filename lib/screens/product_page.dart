@@ -33,7 +33,9 @@ class _ProductPageState extends State<ProductPage> {
         .set({"size": _selectedProductSize});
   }
 
-  final SnackBar _snackBar = SnackBar(content: Text("Product added to the cart"),);
+  final SnackBar _snackBar = SnackBar(
+    content: Text("Product added to the cart"),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +132,8 @@ class _ProductPageState extends State<ProductPage> {
                           GestureDetector(
                             onTap: () async {
                               await _addToSaved();
-                              Scaffold.of(context).showSnackBar(_snackBar);
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(_snackBar);
                             },
                             child: Container(
                               width: 65.0,
@@ -152,7 +155,8 @@ class _ProductPageState extends State<ProductPage> {
                             child: GestureDetector(
                               onTap: () async {
                                 await _addToCart();
-                                Scaffold.of(context).showSnackBar(_snackBar);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(_snackBar);
                               },
                               child: Container(
                                 height: 65.0,
