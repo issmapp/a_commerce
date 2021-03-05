@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1098835668099",
+    "project_id": "reliableapp-31ce1",
+    "storage_bucket": "reliableapp-31ce1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098835668099:android:e224f917723edde0e9ffb6",
+        "android_client_info": {
+          "package_name": "com.reliable.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098835668099-lk6cjq2m4sgf8ev42088pokj8o2oobni.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3INVncCWJRFir3mPXDm7ZHozOQRKBNkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098835668099-lk6cjq2m4sgf8ev42088pokj8o2oobni.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
