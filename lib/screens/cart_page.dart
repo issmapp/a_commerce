@@ -1,6 +1,6 @@
-import 'package:a_commerce/screens/product_page.dart';
-import 'package:a_commerce/services/firebase_services.dart';
-import 'package:a_commerce/widgets/custom_action_bar.dart';
+import 'package:reliableshop/screens/product_page.dart';
+import 'package:reliableshop/services/firebase_services.dart';
+import 'package:reliableshop/widgets/custom_action_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,7 @@
-import 'package:a_commerce/constants.dart';
-import 'package:a_commerce/services/firebase_services.dart';
-import 'package:a_commerce/widgets/custom_input.dart';
-import 'package:a_commerce/widgets/product_card.dart';
+import 'package:reliableshop/constants.dart';
+import 'package:reliableshop/services/firebase_services.dart';
+import 'package:reliableshop/widgets/custom_input.dart';
+import 'package:reliableshop/widgets/product_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

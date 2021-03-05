@@ -1,4 +1,4 @@
-import 'package:a_commerce/constants.dart';
+import 'package:reliableshop/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {

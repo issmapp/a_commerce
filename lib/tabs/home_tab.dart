@@ -1,5 +1,5 @@
-import 'package:a_commerce/widgets/custom_action_bar.dart';
-import 'package:a_commerce/widgets/product_card.dart';
+import 'package:reliableshop/widgets/custom_action_bar.dart';
+import 'package:reliableshop/widgets/product_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

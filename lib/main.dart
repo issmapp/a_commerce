@@ -1,4 +1,4 @@
-import 'package:a_commerce/screens/landing_page.dart';
+import 'package:reliableshop/screens/landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -1,8 +1,8 @@
-import 'package:a_commerce/constants.dart';
-import 'package:a_commerce/services/firebase_services.dart';
-import 'package:a_commerce/widgets/custom_action_bar.dart';
-import 'package:a_commerce/widgets/image_swipe.dart';
-import 'package:a_commerce/widgets/product_size.dart';
+import 'package:reliableshop/constants.dart';
+import 'package:reliableshop/services/firebase_services.dart';
+import 'package:reliableshop/widgets/custom_action_bar.dart';
+import 'package:reliableshop/widgets/image_swipe.dart';
+import 'package:reliableshop/widgets/product_size.dart';
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatefulWidget {

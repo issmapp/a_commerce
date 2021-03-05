@@ -1,8 +1,8 @@
-import 'package:a_commerce/services/firebase_services.dart';
-import 'package:a_commerce/tabs/home_tab.dart';
-import 'package:a_commerce/tabs/saved_tab.dart';
-import 'package:a_commerce/tabs/search_tab.dart';
-import 'package:a_commerce/widgets/bottom_tabs.dart';
+import 'package:reliableshop/services/firebase_services.dart';
+import 'package:reliableshop/tabs/home_tab.dart';
+import 'package:reliableshop/tabs/saved_tab.dart';
+import 'package:reliableshop/tabs/search_tab.dart';
+import 'package:reliableshop/widgets/bottom_tabs.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,8 +52,7 @@ class _HomePageState extends State<HomePage> {
           BottomTabs(
             selectedTab: _selectedTab,
             tabPressed: (num) {
-              _tabsPageController.animateToPage(
-                  num,
+              _tabsPageController.animateToPage(num,
                   duration: Duration(milliseconds: 300),
                   curve: Curves.easeOutCubic);
             },

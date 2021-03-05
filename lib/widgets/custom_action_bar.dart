@@ -1,6 +1,6 @@
-import 'package:a_commerce/constants.dart';
-import 'package:a_commerce/screens/cart_page.dart';
-import 'package:a_commerce/services/firebase_services.dart';
+import 'package:reliableshop/constants.dart';
+import 'package:reliableshop/screens/cart_page.dart';
+import 'package:reliableshop/services/firebase_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

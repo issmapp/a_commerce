@@ -1,6 +1,6 @@
-import 'package:a_commerce/constants.dart';
-import 'package:a_commerce/screens/home_page.dart';
-import 'package:a_commerce/screens/login_page.dart';
+import 'package:reliableshop/constants.dart';
+import 'package:reliableshop/screens/home_page.dart';
+import 'package:reliableshop/screens/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

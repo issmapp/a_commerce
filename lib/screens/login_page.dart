@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:a_commerce/constants.dart';
-import 'package:a_commerce/screens/register_page.dart';
-import 'package:a_commerce/widgets/custom_btn.dart';
-import 'package:a_commerce/widgets/custom_input.dart';
+import 'package:reliableshop/constants.dart';
+import 'package:reliableshop/screens/register_page.dart';
+import 'package:reliableshop/widgets/custom_btn.dart';
+import 'package:reliableshop/widgets/custom_input.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,9 @@
-import 'package:a_commerce/widgets/custom_btn.dart';
+import 'package:reliableshop/widgets/custom_btn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:reliableshop/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/custom_btn.dart';
 
 class RegisterPage extends StatefulWidget {
   @override

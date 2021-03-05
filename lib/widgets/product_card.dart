@@ -1,5 +1,5 @@
-import 'package:a_commerce/constants.dart';
-import 'package:a_commerce/screens/product_page.dart';
+import 'package:reliableshop/constants.dart';
+import 'package:reliableshop/screens/product_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
