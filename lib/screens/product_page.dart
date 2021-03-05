@@ -145,7 +145,7 @@ class _ProductPageState extends State<ProductPage> {
                               alignment: Alignment.center,
                               child: Image(
                                 image: AssetImage(
-                                  "assets/images/tab_saved.png",
+                                  "assets/tab_saved.png",
                                 ),
                                 height: 22.0,
                               ),

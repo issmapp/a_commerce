@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:a_commerce/constants.dart';
 import 'package:a_commerce/screens/register_page.dart';
 import 'package:a_commerce/widgets/custom_btn.dart';
 import 'package:a_commerce/widgets/custom_input.dart';
+import 'package:delayed_display/delayed_display.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -97,69 +101,153 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.only(
-                  top: 24.0,
-                ),
-                child: Text(
-                  "Welcome User,\nLogin to your account",
-                  textAlign: TextAlign.center,
-                  style: Constants.boldHeading,
-                ),
-              ),
-              Column(
-                children: [
-                  CustomInput(
-                    hintText: "Email...",
-                    onChanged: (value) {
-                      _loginEmail = value;
-                    },
-                    onSubmitted: (value) {
-                      _passwordFocusNode.requestFocus();
-                    },
-                    textInputAction: TextInputAction.next,
+        child: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: DelayedDisplay(
+                    fadingDuration: Duration(seconds: 2),
+                    fadeIn: true,
+                    slidingCurve: Curves.easeInCirc,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        top: 30,
+                      ),
+                      child: Image.asset("assets/covertitle.png"),
+                    ),
                   ),
-                  CustomInput(
-                    hintText: "Password...",
-                    onChanged: (value) {
-                      _loginPassword = value;
-                    },
-                    focusNode: _passwordFocusNode,
-                    isPasswordField: true,
-                    onSubmitted: (value) {
-                      _submitForm();
-                    },
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 16, right: 16),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.email,
+                              color: Colors.black,
+                            ),
+                            labelText: 'E-mail',
+                            hintText: 'Enter e-mail here'),
+                        textInputAction: TextInputAction.next,
+                        onChanged: (value) {
+                          _loginEmail = value;
+                        },
+                        onFieldSubmitted: (value) {
+                          _passwordFocusNode.requestFocus();
+                        },
+                      ),
+                      // CustomInput(
+                      //   hintText: "Email...",
+                      //   onChanged: (value) {
+                      //     _loginEmail = value;
+                      //   },
+                      //   onSubmitted: (value) {
+                      //     _passwordFocusNode.requestFocus();
+                      //   },
+                      //   textInputAction: TextInputAction.next,
+                      // ),
+                      SizedBox(height: 15),
+                      TextFormField(
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          hintText: 'Enter password here',
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.lock,
+                            color: Colors.black,
+                          ),
+                        ),
+                        focusNode: _passwordFocusNode,
+                        onChanged: (value) {
+                          _loginPassword = value;
+                        },
+                        onFieldSubmitted: (value) {
+                          _submitForm();
+                        },
+                      ),
+                      // CustomInput(
+                      //   hintText: "Password...",
+                      //   onChanged: (value) {
+                      //     _loginPassword = value;
+                      //   },
+                      //   focusNode: _passwordFocusNode,
+                      //   isPasswordField: true,
+                      //   onSubmitted: (value) {
+                      //     _submitForm();
+                      //   },
+                      // ),
+                      SizedBox(height: 10),
+                      ElevatedButton.icon(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.black)),
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.login,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                        label: Text(
+                          'SIGN IN',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                      // CustomBtn(
+                      //   text: "Login",
+                      //   onPressed: () {
+                      //     _submitForm();
+                      //   },
+                      //   isLoading: _loginFormLoading,
+                      // )
+                      TextButton.icon(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RegisterPage()));
+                        },
+                        icon: Icon(
+                          Icons.app_registration,
+                          color: Colors.black,
+                          size: 25,
+                        ),
+                        label: Text(
+                          'Don\'t have an account? Sign Up now!',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ],
                   ),
-                  CustomBtn(
-                    text: "Login",
-                    onPressed: () {
-                      _submitForm();
-                    },
-                    isLoading: _loginFormLoading,
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 16.0,
                 ),
-                child: CustomBtn(
-                  text: "Create New Account",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
-                    );
-                  },
-                  outlineBtn: true,
-                ),
-              ),
-            ],
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //     bottom: 16.0,
+                //   ),
+                //   child: CustomBtn(
+                //     text: "Create New Account",
+                //     onPressed: () {
+                //       Navigator.push(
+                //         context,
+                //         MaterialPageRoute(builder: (context) => RegisterPage()),
+                //       );
+                //     },
+                //     outlineBtn: true,
+                //   ),
+                // ),
+              ],
+            ),
           ),
         ),
       ),

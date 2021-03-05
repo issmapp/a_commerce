@@ -1,6 +1,4 @@
-import 'package:a_commerce/constants.dart';
 import 'package:a_commerce/widgets/custom_btn.dart';
-import 'package:a_commerce/widgets/custom_input.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +8,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
   // Build an alert dialog to display some errors.
   Future<void> _alertDialogBuilder(String error) async {
     return showDialog(
@@ -31,8 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
               )
             ],
           );
-        }
-    );
+        });
   }
 
   // Create a new user account
@@ -41,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _registerEmail, password: _registerPassword);
       return null;
-    } on FirebaseAuthException catch(e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return 'The password provided is too weak.';
       } else if (e.code == 'email-already-in-use') {
@@ -63,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
     String _createAccountFeedback = await _createAccount();
 
     // If the string is not null, we got error while create account.
-    if(_createAccountFeedback != null) {
+    if (_createAccountFeedback != null) {
       _alertDialogBuilder(_createAccountFeedback);
 
       // Set the form to regular state [not loading].
@@ -101,67 +97,125 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        elevation: 0,
+        toolbarHeight: 80,
+        title: Text(
+          'Register',
+          style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          color: Colors.black,
+          icon: Icon(
+            Icons.arrow_back_ios,
+            size: 20,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.only(
-                  top: 24.0,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(20),
+            margin: EdgeInsets.all(10),
+            width: double.infinity,
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  height: 50,
                 ),
-                child: Text(
-                  "Create A New Account",
-                  textAlign: TextAlign.center,
-                  style: Constants.boldHeading,
-                ),
-              ),
-              Column(
-                children: [
-                  CustomInput(
-                    hintText: "Email...",
-                    onChanged: (value) {
-                      _registerEmail = value;
-                    },
-                    onSubmitted: (value) {
-                      _passwordFocusNode.requestFocus();
-                    },
-                    textInputAction: TextInputAction.next,
+
+                TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    hintText: 'Enter e-mail address',
+                    labelText: 'E-mail : ',
+                    prefixIcon:
+                        Icon(Icons.email, color: Colors.black, size: 25),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Colors.black, width: 2),
+                    ),
                   ),
-                  CustomInput(
-                    hintText: "Password...",
-                    onChanged: (value) {
-                      _registerPassword = value;
-                    },
-                    focusNode: _passwordFocusNode,
-                    isPasswordField: true,
-                    onSubmitted: (value) {
-                      _submitForm();
-                    },
-                  ),
-                  CustomBtn(
-                    text: "Create New Account",
-                    onPressed: () {
-                      _submitForm();
-                    },
-                    isLoading: _registerFormLoading,
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 16.0,
-                ),
-                child: CustomBtn(
-                  text: "Back To Login",
-                  onPressed: () {
-                    Navigator.pop(context);
+                  onChanged: (value) {
+                    _registerEmail = value;
                   },
-                  outlineBtn: true,
+                  onFieldSubmitted: (value) {
+                    _passwordFocusNode.requestFocus();
+                  },
+                  textInputAction: TextInputAction.next,
                 ),
-              ),
-            ],
+                SizedBox(height: 30),
+
+                TextFormField(
+                  keyboardType: TextInputType.text,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Password',
+                    labelText: 'Password : ',
+                    prefixIcon:
+                        Icon(Icons.lock_outline, color: Colors.black, size: 25),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Colors.black, width: 2),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    _registerPassword = value;
+                  },
+                  focusNode: _passwordFocusNode,
+                  onFieldSubmitted: (value) {
+                    _submitForm();
+                  },
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+
+                // CustomInput(
+                //   hintText: "Password...",
+                //   onChanged: (value) {
+                //     _registerPassword = value;
+                //   },
+                //   focusNode: _passwordFocusNode,
+                //   isPasswordField: true,
+                //   onSubmitted: (value) {
+                //     _submitForm();
+                //   },
+                // ),
+
+                // ElevatedButton.icon(
+                //   style: ButtonStyle(
+                //       backgroundColor: MaterialStateProperty.all(Colors.black)),
+                //   onPressed: () {
+                //     _submitForm();
+                //   },
+
+                //   icon: Icon(
+                //     Icons.app_registration,
+                //     color: Colors.white,
+                //     size: 25,
+                //   ),
+                //   label: Text(
+                //     'REGISTER',
+                //     style: TextStyle(color: Colors.white, fontSize: 20),
+                //   ),
+                // ),
+                CustomBtn(
+                  text: "Create New Account",
+                  onPressed: () {
+                    _submitForm();
+                  },
+                  isLoading: _registerFormLoading,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -10,13 +10,13 @@ class CustomActionBar extends StatelessWidget {
   final bool hasBackArrrow;
   final bool hasTitle;
   final bool hasBackground;
-  CustomActionBar({this.title, this.hasBackArrrow, this.hasTitle, this.hasBackground});
+  CustomActionBar(
+      {this.title, this.hasBackArrrow, this.hasTitle, this.hasBackground});
 
   FirebaseServices _firebaseServices = FirebaseServices();
 
-  final CollectionReference _usersRef = FirebaseFirestore
-      .instance
-      .collection("Users");
+  final CollectionReference _usersRef =
+      FirebaseFirestore.instance.collection("Users");
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +26,16 @@ class CustomActionBar extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        gradient: _hasBackground ? LinearGradient(
-          colors: [
-            Colors.white,
-            Colors.white.withOpacity(0),
-          ],
-          begin: Alignment(0, 0),
-          end: Alignment(0, 1),
-        ): null
-      ),
+          gradient: _hasBackground
+              ? LinearGradient(
+                  colors: [
+                    Colors.white,
+                    Colors.white.withOpacity(0),
+                  ],
+                  begin: Alignment(0, 0),
+                  end: Alignment(0, 1),
+                )
+              : null),
       padding: EdgeInsets.only(
         top: 56.0,
         left: 24.0,
@@ -44,7 +45,7 @@ class CustomActionBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          if(_hasBackArrow)
+          if (_hasBackArrow)
             GestureDetector(
               onTap: () {
                 Navigator.pop(context);
@@ -58,25 +59,25 @@ class CustomActionBar extends StatelessWidget {
                 ),
                 alignment: Alignment.center,
                 child: Image(
-                  image: AssetImage(
-                    "assets/images/back_arrow.png"
-                  ),
+                  image: AssetImage("assets/back_arrow.png"),
                   color: Colors.white,
                   width: 16.0,
                   height: 16.0,
                 ),
               ),
             ),
-          if(_hasTitle)
+          if (_hasTitle)
             Text(
               title ?? "Action Bar",
               style: Constants.boldHeading,
             ),
           GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => CartPage(),
-              ));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartPage(),
+                  ));
             },
             child: Container(
               width: 42.0,
@@ -87,11 +88,14 @@ class CustomActionBar extends StatelessWidget {
               ),
               alignment: Alignment.center,
               child: StreamBuilder(
-                stream: _usersRef.doc(_firebaseServices.getUserId()).collection("Cart").snapshots(),
+                stream: _usersRef
+                    .doc(_firebaseServices.getUserId())
+                    .collection("Cart")
+                    .snapshots(),
                 builder: (context, snapshot) {
                   int _totalItems = 0;
 
-                  if(snapshot.connectionState == ConnectionState.active) {
+                  if (snapshot.connectionState == ConnectionState.active) {
                     List _documents = snapshot.data.docs;
                     _totalItems = _documents.length;
                   }
